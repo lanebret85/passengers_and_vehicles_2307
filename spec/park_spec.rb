@@ -46,7 +46,7 @@ RSpec.describe Park do
     it "starts with an empty array" do
       chatfield = Park.new({name: "Chatfield", admission_price: 15})
 
-      expect(chatfield.passengers).to eq([])
+      expect(chatfield.park_passengers).to eq([])
     end
 
     it "can return a list of passengers from all vehicles" do
@@ -70,11 +70,17 @@ RSpec.describe Park do
       vehicle_2.add_passenger(taylor)
       vehicle_3.add_passenger(lane)
       
-      expect(chatfield.passengers).to eq([charlie, jude, taylor, lane])
+      expect(chatfield.park_passengers).to eq([charlie, jude, taylor, lane])
     end
   end
 
   describe "#revenue" do
+    it "starts with a value of 0" do
+      chatfield = Park.new({name: "Chatfield", admission_price: 15})
+
+      expect(chatfield.revenue).to eq(0)
+    end
+
     it "can calculate total revenue generated from all adults entering the park" do
       chatfield = Park.new({name: "Chatfield", admission_price: 15})
 
