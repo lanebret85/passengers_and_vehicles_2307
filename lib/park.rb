@@ -1,29 +1,29 @@
 class Park
-  attr_reader :name, :admission_price, :vehicles, :park_passengers
+  attr_reader :name, :admission_price, :vehicles, :passengers
 
   def initialize(park_details)
     @name = park_details[:name]
     @admission_price = park_details[:admission_price]
     @vehicles = []
-    @park_passengers = []
+    @passengers = []
   end
 
   def add_vehicle(vehicle)
     @vehicles << vehicle
   end
   
-  def park_passengers
+  def passengers
     @vehicles.each do |vehicle|
       vehicle.passengers.each do |person|
-        @park_passengers << person
+        @passengers << person
       end
     end
-    @park_passengers
+    @passengers
   end
 
   def revenue
     total_revenue = 0
-    park_passengers.map {
+    passengers.map {
       |passenger| if passenger.adult?
       total_revenue += @admission_price
       end
